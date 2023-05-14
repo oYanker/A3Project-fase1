@@ -4,13 +4,21 @@
  */
 package com.a3project.projetcta3.view;
 
+import java.awt.Dialog.ModalityType;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joaop
  */
 public class Mensagens extends Exception {
 
-     Mensagens(String msg) {
-        super(msg);
+    Mensagens(String msg) {
+        JOptionPane optionPane = new JOptionPane(msg, JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Mensagem");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
+
 }

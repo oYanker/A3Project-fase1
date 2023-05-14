@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import com.a3project.projetcta3.DAO.FerramentasDAO;
 import com.a3project.projetcta3.model.Amigos;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,8 +25,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
         this.carregaTabela();
     }
 
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,9 +35,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFerramentas = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabelN = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JTextField();
@@ -68,34 +64,12 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                 "id", "Nome", "Telefone", "Ferramenta", "Valor", "Marca"
             }
         ));
+        jTableFerramentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableFerramentasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableFerramentas);
-
-        jButton1.setText("Cancelar");
-        jButton1.setToolTipText("");
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 30));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Alterar");
-        jButton2.setMinimumSize(new java.awt.Dimension(100, 30));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(255, 51, 0));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Apagar");
-        jButton5.setMinimumSize(new java.awt.Dimension(100, 30));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
         jLabel3.setText("Gerenciamento de Ferramentas");
@@ -182,12 +156,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                                 .addComponent(jLabelValor)
                                 .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                                 .addComponent(jLabelTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabelFerramenta)
                                 .addComponent(jLabelMarca)))))
                 .addContainerGap(165, Short.MAX_VALUE))
@@ -229,29 +197,12 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonApagar)
                     .addComponent(jButtonCancel))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jLabelTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelTelefoneActionPerformed
         // TODO add your handling code here:
@@ -276,8 +227,9 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             }
 
             // retorna 0 -> primeiro bot�o | 1 -> segundo bot�o | 2 -> terceiro bot�o
-            int resposta_usuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja APAGAR este Aluno ?");
-
+            JDialog camada = new JDialog();
+            camada.setAlwaysOnTop(true);
+            int resposta_usuario = JOptionPane.showConfirmDialog(camada, "Tem certeza que deseja APAGAR este Aluno ?");
             if (resposta_usuario == 0) {// clicou em SIM
 
                 // envia os dados para o Aluno processar
@@ -289,7 +241,7 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                     this.jLabelFerramenta.setText("");
                     this.jLabelValor.setText("");
                     this.jLabelMarca.setText("");
-                    JOptionPane.showMessageDialog(rootPane, "Ferramenta Apagada com Sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Empréstimo apagado com Sucesso!");
 
                 }
 
@@ -306,7 +258,7 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButtonApagarActionPerformed
-@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     public void carregaTabela() {
 
         DefaultTableModel modelo = (DefaultTableModel) this.jTableFerramentas.getModel();
@@ -328,41 +280,47 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
         }
     }
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
+       
         try {
             // recebendo e validando dados da interface gr�fica.
             int id = 0;
             String nome = "";
             int telefone = 0;
             String nomeF = "";
-            double valor = 0;
+            double valor = 0.0;
             String marca = "";
 
-            if (this.jLabelN.getText().length() < 2) {
+            if (this.jLabelNome.getText().length() < 2) {
                 throw new Mensagens("Nome deve conter ao menos 2 caracteres.");
             } else {
-                nome = this.jLabelN.getText();
+                nome = this.jLabelNome.getText();
             }
 
-            if (this.jLabelT.getText().length() <= 0) {
-                throw new Mensagens("Número de telefone deve ser um número que existe");
+            if (this.jLabelTelefone.getText().length() <= 7) {
+               throw new Mensagens("Insira um número valido de 8 digitos");
             } else {
-                telefone = Integer.parseInt(this.jLabelT.getText());
+                telefone = Integer.parseInt(this.jLabelTelefone.getText());
             }
 
-            if (this.jLabelF.getText().length() < 2) {
-                throw new Mensagens("O nome da ferramenta deve conter ao menos 2 caracteres.");
+            if (this.jLabelFerramenta.getText().length() <= 3) {
+                throw new Mensagens("O nome da ferramenta deve conter ao menos 3 caracteres.");
             } else {
-                nomeF = this.jLabelF.getText();
+                nomeF = this.jLabelFerramenta.getText();
             }
 
-            if (this.jLabelV.getText().length() <= 0) {
+            if (this.jLabelValor.getText().length() <= 0) {
                 throw new Mensagens("Valor deve ser maior que zero");
             } else {
-                valor = Double.parseDouble(this.jLabelV.getText());
+                valor = Double.parseDouble(this.jLabelValor.getText());
+            }
+            if (this.jLabelMarca.getText().length() <= 3) {
+                throw new Mensagens("O nome deve ter ao menos 4 caracteres");
+            } else {
+                marca = this.jLabelMarca.getText();
             }
 
             if (this.jTableFerramentas.getSelectedRow() == -1) {
-                throw new Mensagens("Primeiro Selecione um Aluno para Alterar");
+                throw new Mensagens("Primeiro Selecione um empréstimo para Alterar");
             } else {
                 id = Integer.parseInt(this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 0).toString());
             }
@@ -371,23 +329,24 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             if (this.objferramenta.UpdateFerramentaBD(id, nome, telefone, nomeF, valor, marca)) {
 
                 // limpa os campos
-                this.jLabelN.setText("");
-                this.jLabelT.setText("");
-                this.jLabelF.setText("");
-                this.jLabelV.setText("");
-                this.jLabelM.setText("");
+                this.jLabelNome.setText("");
+                this.jLabelTelefone.setText("");
+                this.jLabelFerramenta.setText("");
+                this.jLabelValor.setText("");
+                this.jLabelMarca.setText("");
 
-                JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Empréstimo Alterado com Sucesso!");
 
             }
             System.out.println(this.objferramenta.getMinhaLista().toString());
         } catch (Mensagens erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
+            
         } catch (NumberFormatException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um n�mero.");
         } finally {
             carregaTabela(); // atualiza a tabela.
         }
+
 
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
@@ -395,6 +354,27 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
         setVisible(false);
     }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jTableFerramentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFerramentasMouseClicked
+
+        if (this.jTableFerramentas.getSelectedRow() != -1) {
+
+            String nome = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 1).toString();
+            String telefone = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 2).toString();
+            String nomeF = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 3).toString();
+            String valor = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 4).toString();
+            String marca = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 5).toString();
+
+            this.jLabelNome.setText(nome);
+            this.jLabelTelefone.setText(telefone);
+            this.jLabelFerramenta.setText(nomeF);
+            this.jLabelValor.setText(valor);
+            this.jLabelMarca.setText(marca);
+
+        }
+
+
+    }//GEN-LAST:event_jTableFerramentasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -432,9 +412,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonAlterar;
     private javax.swing.JButton jButtonApagar;
     private javax.swing.JButton jButtonCancel;
