@@ -17,8 +17,11 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
     /**
      * Creates new form GerenciamentoFerramentas
      */
-    private Ferramentas objferramenta; // cria o v�nculo com o objferramenta
+    private Ferramentas objferramenta; // cria o vínculo com o objferramenta
 
+    /**
+     *
+     */
     public GerenciamentoFerramentas() {
         initComponents();
         this.objferramenta = new Ferramentas(); // carrega objferramenta de aluno
@@ -36,15 +39,11 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFerramentas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jLabelN = new javax.swing.JLabel();
-        jLabelNome = new javax.swing.JTextField();
         jLabelM = new javax.swing.JLabel();
-        jLabelTelefone = new javax.swing.JTextField();
         jLabelV = new javax.swing.JLabel();
         jLabelFerramenta = new javax.swing.JTextField();
         jLabelValor = new javax.swing.JTextField();
         jLabelMarca = new javax.swing.JTextField();
-        jLabelT = new javax.swing.JLabel();
         jLabelF = new javax.swing.JLabel();
         jButtonAlterar = new javax.swing.JButton();
         jButtonApagar = new javax.swing.JButton();
@@ -74,15 +73,7 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
         jLabel3.setText("Gerenciamento de Ferramentas");
 
-        jLabelN.setText("Nome");
-
         jLabelM.setText("Marca");
-
-        jLabelTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLabelTelefoneActionPerformed(evt);
-            }
-        });
 
         jLabelV.setText("Valor");
 
@@ -98,7 +89,11 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             }
         });
 
-        jLabelT.setText("Telefone");
+        jLabelMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLabelMarcaActionPerformed(evt);
+            }
+        });
 
         jLabelF.setText("Ferramenta");
 
@@ -133,17 +128,11 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                         .addGap(165, 165, 165)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(jLabelN))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelM, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelV, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelT, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelF, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabelM, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelV, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelF, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -153,12 +142,10 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                                 .addGap(39, 39, 39)
                                 .addComponent(jButtonCancel))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelValor)
-                                .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                                .addComponent(jLabelTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                                .addComponent(jLabelValor, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                                 .addComponent(jLabelFerramenta)
                                 .addComponent(jLabelMarca)))))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
@@ -168,17 +155,9 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelN)
-                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelT))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelF))
@@ -187,26 +166,22 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                             .addComponent(jLabelValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelV))
                         .addGap(36, 36, 36))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelM))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(848, 848, 848)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonApagar)
                     .addComponent(jButtonCancel))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabelTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelTelefoneActionPerformed
 
     private void jLabelFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelFerramentaActionPerformed
         // TODO add your handling code here:
@@ -236,8 +211,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                 if (this.objferramenta.DeleteFerramentaBD(id)) {
 
                     // limpa os campos
-                    this.jLabelNome.setText("");
-                    this.jLabelTelefone.setText("");
                     this.jLabelFerramenta.setText("");
                     this.jLabelValor.setText("");
                     this.jLabelMarca.setText("");
@@ -258,6 +231,10 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButtonApagarActionPerformed
+
+    /**
+     *
+     */
     @SuppressWarnings("unchecked")
     public void carregaTabela() {
 
@@ -282,25 +259,12 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
        
         try {
-            // recebendo e validando dados da interface gr�fica.
+            // recebendo e validando dados da interface gráfica.
             int id = 0;
-            String nome = "";
-            int telefone = 0;
             String nomeF = "";
             double valor = 0.0;
             String marca = "";
 
-            if (this.jLabelNome.getText().length() < 2) {
-                throw new Mensagens("Nome deve conter ao menos 2 caracteres.");
-            } else {
-                nome = this.jLabelNome.getText();
-            }
-
-            if (this.jLabelTelefone.getText().length() <= 7) {
-               throw new Mensagens("Insira um número valido de 8 digitos");
-            } else {
-                telefone = Integer.parseInt(this.jLabelTelefone.getText());
-            }
 
             if (this.jLabelFerramenta.getText().length() <= 3) {
                 throw new Mensagens("O nome da ferramenta deve conter ao menos 3 caracteres.");
@@ -313,11 +277,9 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             } else {
                 valor = Double.parseDouble(this.jLabelValor.getText());
             }
-            if (this.jLabelMarca.getText().length() <= 3) {
-                throw new Mensagens("O nome deve ter ao menos 4 caracteres");
-            } else {
+             
                 marca = this.jLabelMarca.getText();
-            }
+            
 
             if (this.jTableFerramentas.getSelectedRow() == -1) {
                 throw new Mensagens("Primeiro Selecione um empréstimo para Alterar");
@@ -326,11 +288,10 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             }
 
             // envia os dados para o Aluno processar
-            if (this.objferramenta.UpdateFerramentaBD(id, nome, telefone, nomeF, valor, marca)) {
+            if (this.objferramenta.UpdateFerramentaBD(id, nomeF, valor, marca)) {
 
                 // limpa os campos
-                this.jLabelNome.setText("");
-                this.jLabelTelefone.setText("");
+
                 this.jLabelFerramenta.setText("");
                 this.jLabelValor.setText("");
                 this.jLabelMarca.setText("");
@@ -359,14 +320,11 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
         if (this.jTableFerramentas.getSelectedRow() != -1) {
 
-            String nome = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 1).toString();
-            String telefone = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 2).toString();
             String nomeF = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 3).toString();
             String valor = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 4).toString();
             String marca = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 5).toString();
 
-            this.jLabelNome.setText(nome);
-            this.jLabelTelefone.setText(telefone);
+
             this.jLabelFerramenta.setText(nomeF);
             this.jLabelValor.setText(valor);
             this.jLabelMarca.setText(marca);
@@ -375,6 +333,10 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTableFerramentasMouseClicked
+
+    private void jLabelMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelMarcaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,10 +382,6 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
     private javax.swing.JTextField jLabelFerramenta;
     private javax.swing.JLabel jLabelM;
     private javax.swing.JTextField jLabelMarca;
-    private javax.swing.JLabel jLabelN;
-    private javax.swing.JTextField jLabelNome;
-    private javax.swing.JLabel jLabelT;
-    private javax.swing.JTextField jLabelTelefone;
     private javax.swing.JLabel jLabelV;
     private javax.swing.JTextField jLabelValor;
     private javax.swing.JScrollPane jScrollPane1;

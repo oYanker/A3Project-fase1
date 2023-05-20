@@ -4,19 +4,50 @@
  */
 package com.a3project.projetcta3.view;
 
+import com.a3project.projetcta3.model.Amigos;
+import com.a3project.projetcta3.model.Ferramentas;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import com.a3project.projetcta3.DAO.FerramentasDAO;
+
 /**
  *
  * @author felipe
  */
 public class GerenciamentoAmigos extends javax.swing.JFrame {
 
+       private Amigos objamigo; // cria o vínculo com o objferramenta
     /**
      * Creates new form GerenciamentoAmigos
      */
     public GerenciamentoAmigos() {
         initComponents();
+        this.objamigo = new Amigos(); // carrega objamigos
+        this.carregaTabelaAmigos();
     }
 
+    /**
+     *
+     */
+    @SuppressWarnings("unchecked")
+    public void carregaTabelaAmigos() {
+
+        DefaultTableModel modelo = (DefaultTableModel) this.jTableAmigos.getModel();
+        modelo.setNumRows(0);
+
+        ArrayList<Amigos> minhalista = new ArrayList<>();
+        minhalista = objamigo.getMinhaListaAmigos();
+
+        for (Amigos a : minhalista) {
+            modelo.addRow(new Object[]{
+                a.getId(),
+                a.getNome(),
+                a.getTelefone(),
+                a.getEmail()
+
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +65,7 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableAmigos = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(660, 600));
@@ -70,7 +101,7 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAmigos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,10 +109,10 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Nome", "Telefone", "E-mail"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableAmigos);
 
         jButton2.setText("Alterar");
         jButton2.setMinimumSize(new java.awt.Dimension(100, 30));
@@ -204,7 +235,7 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAmigos;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

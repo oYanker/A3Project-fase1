@@ -4,6 +4,10 @@ import java.util.*;
 import com.a3project.projetcta3.DAO.FerramentasDAO;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author drera
+ */
 public class Ferramentas extends Amigos {
 
     private String nome_ferramenta;
@@ -11,10 +15,19 @@ public class Ferramentas extends Amigos {
     private String marca;
     private final FerramentasDAO dao;
 
+    /**
+     *
+     */
     public Ferramentas() {
         this.dao = new FerramentasDAO();
     }
 
+    /**
+     *
+     * @param nome_ferramenta
+     * @param valor
+     * @param marca
+     */
     public Ferramentas(String nome_ferramenta, double valor, String marca) {
         this.nome_ferramenta = nome_ferramenta;
         this.valor = valor;
@@ -22,8 +35,17 @@ public class Ferramentas extends Amigos {
         this.dao = new FerramentasDAO();
     }
 
-    public Ferramentas(int id, String nome, int telefone, String nome_ferramenta, double valor, String marca) {
-        super(id, nome, telefone);
+    /**
+     *
+     * @param id
+     * @param nome
+     * @param telefone
+     * @param nome_ferramenta
+     * @param valor
+     * @param marca
+     */
+    public Ferramentas(int id, String nome_ferramenta, double valor, String marca) {
+
         this.nome_ferramenta = nome_ferramenta;
         this.valor = valor;
         this.marca = marca;
@@ -31,60 +53,113 @@ public class Ferramentas extends Amigos {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNome_ferramenta() {
         return nome_ferramenta;
     }
 
+    /**
+     *
+     * @param nome
+     */
     public void setNome_ferramenta(String nome) {
         this.nome_ferramenta = nome;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getValor() {
         return valor;
     }
 
+    /**
+     *
+     * @param valor
+     */
     public void setValor(double valor) {
         this.valor = valor;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMarca() {
         return marca;
     }
 
+    /**
+     *
+     * @param marca
+     */
     public void setMarca(String marca) {
         this.marca = marca;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "\n ID: " + this.getId()
-                + "\n Nome: " + this.getNome()
-                + "\n Telefone: " + this.getTelefone()
                 + "\n Ferramenta:" + this.getNome_ferramenta()
                 + "\n Valor:" + this.getValor()
                 + "\n marca:" + this.getMarca()
                 + "\n -----------";
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getMinhaLista() {
         return dao.getMinhaLista();
     }
 
-    public boolean InsertFerramentaBD(String nome, int telefone, String nome_ferramenta, double valor, String marca) throws SQLException {
+    /**
+     *
+     * @param nome_ferramenta
+     * @param valor
+     * @param marca
+     * @return
+     * @throws SQLException
+     */
+    public boolean InsertFerramentaBD(String nome_ferramenta, double valor, String marca) throws SQLException {
         int id = this.maiorID() + 1;
-        Ferramentas objeto = new Ferramentas(id,nome, telefone, nome_ferramenta, valor, marca);
+        Ferramentas objeto = new Ferramentas(id, nome_ferramenta, valor, marca);
         dao.InsertFerramentaBD(objeto);
         return true;
 
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean DeleteFerramentaBD(int id) {
         dao.DeleteFerramentaBD(id);
         return true;
     }
 
-    public boolean UpdateFerramentaBD(int id, String nome, int telefone, String nome_ferramenta, double valor, String marca) {
-        Ferramentas objeto = new Ferramentas(id, nome, telefone, nome_ferramenta, valor, marca);
+    /**
+     *
+     * @param id
+     * @param nome
+     * @param telefone
+     * @param nome_ferramenta
+     * @param valor
+     * @param marca
+     * @return
+     */
+    public boolean UpdateFerramentaBD(int id, String nome_ferramenta, double valor, String marca) {
+        Ferramentas objeto = new Ferramentas(id, nome_ferramenta, valor, marca);
         dao.UpdateFerramentaBD(objeto);
         return true;
     }
@@ -93,6 +168,11 @@ public class Ferramentas extends Amigos {
         return dao.maiorID();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Ferramentas carregaFerramenta(int id) {
         dao.carregaFerramenta(id);
         return null;
