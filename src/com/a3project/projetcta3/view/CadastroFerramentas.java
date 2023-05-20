@@ -135,9 +135,7 @@ import javax.swing.JOptionPane;
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         try {
-            // recebendo e validando dados da interface gr�fica.
-            String nome = "";
-            int telefone = 0;
+            // recebendo e validando dados da interface gráfica.
             String nomeF = "";
             double valor = 0;
             String marca = "";
@@ -177,7 +175,7 @@ import javax.swing.JOptionPane;
 
             // envia os dados para o Controlador cadastrar
             if (this.objferramenta.InsertFerramentaBD( nomeF,  valor, marca)) {
-                JOptionPane.showMessageDialog(rootPane, "Aluno Cadastrado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrada com Sucesso!");
 
                 // limpa campos da interface
                 this.jTextFieldFerramenta.setText("");
@@ -191,15 +189,11 @@ import javax.swing.JOptionPane;
         } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um n�mero.");
+            JOptionPane.showMessageDialog(null, "Informe um número.");
         } catch (SQLException ex) {
             Logger.getLogger(CadastroFerramentas.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     
-        
-        
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed

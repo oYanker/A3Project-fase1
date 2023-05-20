@@ -134,18 +134,18 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                             .addComponent(jLabelV, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelF, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelValor, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                            .addComponent(jLabelFerramenta)
+                            .addComponent(jLabelMarca)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
                                 .addComponent(jButtonAlterar)
                                 .addGap(34, 34, 34)
                                 .addComponent(jButtonApagar)
                                 .addGap(39, 39, 39)
-                                .addComponent(jButtonCancel))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelValor, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                                .addComponent(jLabelFerramenta)
-                                .addComponent(jLabelMarca)))))
-                .addContainerGap(162, Short.MAX_VALUE))
+                                .addComponent(jButtonCancel)))))
+                .addContainerGap(117, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
@@ -171,12 +171,12 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelM))))
-                .addGap(848, 848, 848)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAlterar)
                     .addComponent(jButtonApagar)
                     .addComponent(jButtonCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -193,28 +193,28 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
     private void jButtonApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarActionPerformed
         try {
-            // validando dados da interface gr�fica.
-            int id = 0;
+            // validando dados da interface gráfica.
+            int id_ferramenta = 0;
             if (this.jTableFerramentas.getSelectedRow() == -1) {
                 throw new Mensagens("Primeiro Selecione uma Ferramenta para APAGAR");
             } else {
-                id = Integer.parseInt(this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 0).toString());
+                id_ferramenta = Integer.parseInt(this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 0).toString());
             }
 
-            // retorna 0 -> primeiro bot�o | 1 -> segundo bot�o | 2 -> terceiro bot�o
+            // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
             JDialog camada = new JDialog();
             camada.setAlwaysOnTop(true);
-            int resposta_usuario = JOptionPane.showConfirmDialog(camada, "Tem certeza que deseja APAGAR este Aluno ?");
+            int resposta_usuario = JOptionPane.showConfirmDialog(camada, "Tem certeza que deseja APAGAR esta Ferramenta ?");
             if (resposta_usuario == 0) {// clicou em SIM
 
                 // envia os dados para o Aluno processar
-                if (this.objferramenta.DeleteFerramentaBD(id)) {
+                if (this.objferramenta.DeleteFerramentaBD(id_ferramenta)) {
 
                     // limpa os campos
                     this.jLabelFerramenta.setText("");
                     this.jLabelValor.setText("");
                     this.jLabelMarca.setText("");
-                    JOptionPane.showMessageDialog(rootPane, "Empréstimo apagado com Sucesso!");
+                    JOptionPane.showMessageDialog(rootPane, "Ferramenta apagada com Sucesso!");
 
                 }
 
@@ -246,10 +246,8 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
         for (Ferramentas a : minhalista) {
             modelo.addRow(new Object[]{
-                a.getId(),
-                a.getNome(),
-                a.getTelefone(),
-                a.getNome_ferramenta(),
+                a.getId_Ferramenta(),
+                a.getNome_Ferramenta(),
                 a.getValor(),
                 a.getMarca()
 
@@ -260,7 +258,7 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
        
         try {
             // recebendo e validando dados da interface gráfica.
-            int id = 0;
+            int id_ferramenta = 0;
             String nomeF = "";
             double valor = 0.0;
             String marca = "";
@@ -282,13 +280,13 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
             
 
             if (this.jTableFerramentas.getSelectedRow() == -1) {
-                throw new Mensagens("Primeiro Selecione um empréstimo para Alterar");
+                throw new Mensagens("Primeiro Selecione uma Ferramenta para Alterar");
             } else {
-                id = Integer.parseInt(this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 0).toString());
+                id_ferramenta = Integer.parseInt(this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 0).toString());
             }
 
             // envia os dados para o Aluno processar
-            if (this.objferramenta.UpdateFerramentaBD(id, nomeF, valor, marca)) {
+            if (this.objferramenta.UpdateFerramentaBD(id_ferramenta, nomeF, valor, marca)) {
 
                 // limpa os campos
 
@@ -296,7 +294,7 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
                 this.jLabelValor.setText("");
                 this.jLabelMarca.setText("");
 
-                JOptionPane.showMessageDialog(rootPane, "Empréstimo Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta alterada com Sucesso!");
 
             }
             System.out.println(this.objferramenta.getMinhaLista().toString());

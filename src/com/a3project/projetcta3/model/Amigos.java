@@ -109,7 +109,6 @@ public class Amigos {
                 + "\n E-mail:" + this.getEmail()
                 + "\n -----------";
     }
-
     /**
      *
      * @return
@@ -159,7 +158,7 @@ public class Amigos {
     }
 
     private int maiorIDAmigos() throws SQLException {
-        return dao.maiorID();
+        return dao.maiorIDAmigos();
     }
 
     /**
@@ -171,5 +170,6 @@ public class Amigos {
         dao.carregaAmigos(id);
         return null;
     }
+    
 
 }

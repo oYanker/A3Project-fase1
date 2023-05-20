@@ -10,6 +10,7 @@ import java.sql.SQLException;
  */
 public class Ferramentas extends Amigos {
 
+    private int id_ferramenta;
     private String nome_ferramenta;
     private double valor;
     private String marca;
@@ -23,41 +24,37 @@ public class Ferramentas extends Amigos {
     }
 
     /**
-     *
+     * @param id_ferramenta
      * @param nome_ferramenta
      * @param valor
      * @param marca
      */
-    public Ferramentas(String nome_ferramenta, double valor, String marca) {
+    public Ferramentas(int id_ferramenta, String nome_ferramenta, double valor, String marca) {
+        this.id_ferramenta = id_ferramenta;
         this.nome_ferramenta = nome_ferramenta;
         this.valor = valor;
         this.marca = marca;
         this.dao = new FerramentasDAO();
     }
 
+
+    public int getId_Ferramenta() {
+        return id_ferramenta;
+    }
+
     /**
      *
-     * @param id
-     * @param nome
-     * @param telefone
-     * @param nome_ferramenta
-     * @param valor
-     * @param marca
+     * @param id_Ferramenta
      */
-    public Ferramentas(int id, String nome_ferramenta, double valor, String marca) {
-
-        this.nome_ferramenta = nome_ferramenta;
-        this.valor = valor;
-        this.marca = marca;
-        this.dao = new FerramentasDAO();
-
+    public void setId_Ferramenta(int id_ferramenta) {
+        this.id_ferramenta = id_ferramenta;
     }
 
     /**
      *
      * @return
      */
-    public String getNome_ferramenta() {
+    public String getNome_Ferramenta() {
         return nome_ferramenta;
     }
 
@@ -65,7 +62,7 @@ public class Ferramentas extends Amigos {
      *
      * @param nome
      */
-    public void setNome_ferramenta(String nome) {
+    public void setNome_Ferramenta(String nome) {
         this.nome_ferramenta = nome;
     }
 
@@ -107,8 +104,8 @@ public class Ferramentas extends Amigos {
      */
     @Override
     public String toString() {
-        return "\n ID: " + this.getId()
-                + "\n Ferramenta:" + this.getNome_ferramenta()
+        return "\n ID: " + this.getId_Ferramenta()
+                + "\n Ferramenta:" + this.getNome_Ferramenta()
                 + "\n Valor:" + this.getValor()
                 + "\n marca:" + this.getMarca()
                 + "\n -----------";
@@ -131,36 +128,34 @@ public class Ferramentas extends Amigos {
      * @throws SQLException
      */
     public boolean InsertFerramentaBD(String nome_ferramenta, double valor, String marca) throws SQLException {
-        int id = this.maiorID() + 1;
-        Ferramentas objeto = new Ferramentas(id, nome_ferramenta, valor, marca);
-        dao.InsertFerramentaBD(objeto);
+        int id_ferramenta = this.maiorID() + 1;
+        Ferramentas objetoFerramenta = new Ferramentas(id_ferramenta, nome_ferramenta, valor, marca);
+        dao.InsertFerramentaBD(objetoFerramenta);
         return true;
 
     }
 
     /**
      *
-     * @param id
+     * @param id_ferramenta
      * @return
      */
-    public boolean DeleteFerramentaBD(int id) {
-        dao.DeleteFerramentaBD(id);
+    public boolean DeleteFerramentaBD(int id_ferramenta) {
+        dao.DeleteFerramentaBD(id_ferramenta);
         return true;
     }
 
     /**
      *
-     * @param id
-     * @param nome
-     * @param telefone
+     * @param id_ferramenta
      * @param nome_ferramenta
      * @param valor
      * @param marca
      * @return
      */
-    public boolean UpdateFerramentaBD(int id, String nome_ferramenta, double valor, String marca) {
-        Ferramentas objeto = new Ferramentas(id, nome_ferramenta, valor, marca);
-        dao.UpdateFerramentaBD(objeto);
+    public boolean UpdateFerramentaBD(int id_ferramenta, String nome_ferramenta, double valor, String marca) {
+        Ferramentas objetoFerramenta = new Ferramentas(id_ferramenta, nome_ferramenta, valor, marca);
+        dao.UpdateFerramentaBD(objetoFerramenta);
         return true;
     }
 
@@ -170,11 +165,11 @@ public class Ferramentas extends Amigos {
 
     /**
      *
-     * @param id
+     * @param id_ferramenta
      * @return
      */
-    public Ferramentas carregaFerramenta(int id) {
-        dao.carregaFerramenta(id);
+    public Ferramentas carregaFerramenta(int id_ferramenta) {
+        dao.carregaFerramenta(id_ferramenta);
         return null;
     }
 

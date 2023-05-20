@@ -9,6 +9,8 @@ import com.a3project.projetcta3.model.Ferramentas;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import com.a3project.projetcta3.DAO.FerramentasDAO;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,12 +63,14 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabelNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableAmigos = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelEmail = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(660, 600));
 
@@ -95,9 +99,9 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
 
         jLabel2.setText("Telefone");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jLabelTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jLabelTelefoneActionPerformed(evt);
             }
         });
 
@@ -122,6 +126,14 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("E-mail");
+
+        jLabelEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jLabelEmailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,19 +147,29 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
                         .addGap(182, 182, 182)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTelefone))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(100, Short.MAX_VALUE))
+                                .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,20 +178,24 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,16 +207,107 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            // validando dados da interface gráfica.
+            int id = 0;
+            if (this.jTableAmigos.getSelectedRow() == -1) {
+                throw new Mensagens("Primeiro Selecione um Amigo para APAGAR");
+            } else {
+                id = Integer.parseInt(this.jTableAmigos.getValueAt(this.jTableAmigos.getSelectedRow(), 0).toString());
+            }
+
+            // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
+            JDialog camada1 = new JDialog();
+            camada1.setAlwaysOnTop(true);
+            int resposta_usuario1 = JOptionPane.showConfirmDialog(camada1, "Tem certeza que deseja APAGAR este Amigo ?");
+            if (resposta_usuario1 == 0) {// clicou em SIM
+
+                // envia os dados para o Aluno processar
+                if (this.objamigo.DeleteAmigosBD(id)) {
+
+                    // limpa os campos
+                    this.jLabelNome.setText("");
+                    this.jLabelTelefone.setText("");
+                    this.jLabelEmail.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Amigo apagado com Sucesso!");
+
+                }
+
+            }
+
+            System.out.println(this.objamigo.getMinhaListaAmigos().toString());
+
+        } catch (Mensagens erro) {
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } finally {
+            // atualiza a tabela.
+            carregaTabelaAmigos();
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jLabelTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jLabelTelefoneActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    try {
+            // recebendo e validando dados da interface gráfica.
+            int id = 0;
+            String nome = "";
+            int telefone = 0;
+            String email = "";
+
+
+            if (this.jLabelNome.getText().length() <= 3) {
+                throw new Mensagens("O nome do Amigo deve conter ao menos 3 caracteres.");
+            } else {
+                nome = this.jLabelNome.getText();
+            }
+
+            if (this.jLabelTelefone.getText().length() <= 0) {
+                throw new Mensagens("Telefone deve ser numero válido");
+            } else {
+                telefone = Integer.parseInt(this.jLabelTelefone.getText());
+            }
+             
+                email = this.jLabelEmail.getText();
+            
+
+            if (this.jTableAmigos.getSelectedRow() == -1) {
+                throw new Mensagens("Primeiro Selecione um Amigo para Alterar");
+            } else {
+                id = Integer.parseInt(this.jTableAmigos.getValueAt(this.jTableAmigos.getSelectedRow(), 0).toString());
+            }
+
+            // envia os dados do Amigo para processar
+            if (this.objamigo.UpdateAmigosBD(id, nome, telefone, email)) {
+
+                // limpa os campos
+
+                this.jLabelNome.setText("");
+                this.jLabelTelefone.setText("");
+                this.jLabelEmail.setText("");
+
+                JOptionPane.showMessageDialog(rootPane, "Amigo Alterado com Sucesso!");
+
+            }
+            System.out.println(this.objamigo.getMinhaListaAmigos().toString());
+        } catch (Mensagens erro) {
+            
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número.");
+        } finally {
+            carregaTabelaAmigos(); // atualiza a tabela.
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabelEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,9 +351,11 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jLabelEmail;
+    private javax.swing.JTextField jLabelNome;
+    private javax.swing.JTextField jLabelTelefone;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAmigos;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
