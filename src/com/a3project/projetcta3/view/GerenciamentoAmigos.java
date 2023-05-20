@@ -250,7 +250,23 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
     private void jLabelTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabelTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelTelefoneActionPerformed
+    private void jTableAmigosMouseClicked(java.awt.event.MouseEvent evt) {                                               
 
+        if (this.jTableAmigos.getSelectedRow() != -1) {
+
+            String nome = this.jTableAmigos.getValueAt(this.jTableAmigos.getSelectedRow(), 1).toString();
+            String telefone = this.jTableAmigos.getValueAt(this.jTableAmigos.getSelectedRow(), 2).toString();
+            String email = this.jTableAmigos.getValueAt(this.jTableAmigos.getSelectedRow(), 3).toString();
+
+
+            this.jLabelNome.setText(nome);
+            this.jLabelTelefone.setText(telefone);
+            this.jLabelEmail.setText(email);
+
+        }
+
+
+    }    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     try {
             // recebendo e validando dados da interface gráfica.

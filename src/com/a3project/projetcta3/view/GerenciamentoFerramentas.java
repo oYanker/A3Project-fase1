@@ -318,9 +318,9 @@ public class GerenciamentoFerramentas extends javax.swing.JFrame {
 
         if (this.jTableFerramentas.getSelectedRow() != -1) {
 
-            String nomeF = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 3).toString();
-            String valor = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 4).toString();
-            String marca = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 5).toString();
+            String nomeF = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 1).toString();
+            String valor = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 2).toString();
+            String marca = this.jTableFerramentas.getValueAt(this.jTableFerramentas.getSelectedRow(), 3).toString();
 
 
             this.jLabelFerramenta.setText(nomeF);
