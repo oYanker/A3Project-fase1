@@ -11,29 +11,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author drera
- */
 public class FerramentasDAO {
 
-    /**
-     *
-     */
     public static ArrayList<Ferramentas> MinhaLista = new ArrayList<Ferramentas>();
     public static ArrayList<Amigos> MinhaListaAmigos = new ArrayList<Amigos>();
 
-    /**
-     *
-     */
     public FerramentasDAO() {
 
     }
 
-    /**
-     *
-     * @return
-     */
     public Connection getConexao() {
 
         Connection connection = null;  //instância da conexão
@@ -49,7 +35,7 @@ public class FerramentasDAO {
             String database = "db_ferramentas";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "!DRE123dre!";
+            String password = "Superserver1234";
 
             connection = DriverManager.getConnection(url, user, password);
 
@@ -62,7 +48,7 @@ public class FerramentasDAO {
 
             return connection;
 
-        } catch (ClassNotFoundException e) {  //Driver n�o encontrado
+        } catch (ClassNotFoundException e) {  //Driver não encontrado
             System.out.println("O driver nao foi encontrado. " + e.getMessage());
             return null;
 
@@ -72,10 +58,6 @@ public class FerramentasDAO {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public int maiorID() {
         int maiorID = 0;
         try {
@@ -92,10 +74,6 @@ public class FerramentasDAO {
         return maiorID;
     }
 
-    /**
-     *
-     * @return
-     */
     public ArrayList getMinhaLista() {
 
         MinhaLista.clear(); // Limpa nosso ArrayList
@@ -108,7 +86,7 @@ public class FerramentasDAO {
                 int id_ferramenta = res.getInt("id_ferramenta");
                 String nome_ferramenta = res.getString("nome_ferramenta");
                 double valor = res.getDouble("valor");
-                String marca= res.getString("marca");
+                String marca = res.getString("marca");
 
                 Ferramentas objetoFerramenta = new Ferramentas(id_ferramenta, nome_ferramenta, valor, marca);
 
@@ -123,22 +101,16 @@ public class FerramentasDAO {
         return MinhaLista;
     }
 
-    /**
-     *
-     * @param objetoFerramenta
-     * @return
-     */
     public boolean InsertFerramentaBD(Ferramentas objetoFerramenta) {
         String sql = "INSERT INTO tb_ferramentas(id_ferramenta ,nome_ferramenta,valor, marca) VALUES(?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
-              stmt.setInt(1, objetoFerramenta.getId_Ferramenta());
+            stmt.setInt(1, objetoFerramenta.getId_Ferramenta());
             stmt.setString(2, objetoFerramenta.getNome_Ferramenta());
             stmt.setDouble(3, objetoFerramenta.getValor());
             stmt.setString(4, objetoFerramenta.getMarca());
-          
 
             stmt.execute();
             stmt.close();
@@ -151,11 +123,6 @@ public class FerramentasDAO {
 
     }
 
-    /**
-     *
-     * @param id_ferramenta
-     * @return
-     */
     public boolean DeleteFerramentaBD(int id_ferramenta) {
         try {
             Statement stmt = this.getConexao().createStatement();
@@ -168,11 +135,6 @@ public class FerramentasDAO {
         return true;
     }
 
-    /**
-     *
-     * @param objetoFerramenta
-     * @return
-     */
     public boolean UpdateFerramentaBD(Ferramentas objetoFerramenta) {
 
         String sql = "UPDATE tb_ferramentas set nome_ferramenta = ? ,valor = ?, marca = ? WHERE id_ferramenta = ?";
@@ -196,11 +158,6 @@ public class FerramentasDAO {
 
     }
 
-    /**
-     *
-     * @param id_ferramenta
-     * @return
-     */
     public Ferramentas carregaFerramenta(int id_ferramenta) {
 
         Ferramentas objetoFerramenta = new Ferramentas();
@@ -221,9 +178,8 @@ public class FerramentasDAO {
         }
         return objetoFerramenta;
     }
-    
- /* NEW CRUD PARA AMIGOS */
-    
+
+    /* CRUD DE AMIGOS */
     public int maiorIDAmigos() {
         int maiorIDAmigos = 0;
         try {
@@ -240,10 +196,6 @@ public class FerramentasDAO {
         return maiorIDAmigos;
     }
 
-    /**
-     *
-     * @return
-     */
     public ArrayList getMinhaListaAmigos() {
 
         MinhaListaAmigos.clear(); // Limpa nosso ArrayList
@@ -255,7 +207,7 @@ public class FerramentasDAO {
 
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
-                int telefone = res.getInt("telefone"); 
+                int telefone = res.getInt("telefone");
                 String email = res.getString("email");
 
                 Amigos objetoA = new Amigos(id, nome, telefone, email);
@@ -271,22 +223,16 @@ public class FerramentasDAO {
         return MinhaListaAmigos;
     }
 
-    /**
-     *
-     * @param objeto
-     * @return
-     */
     public boolean InsertAmigosBD(Amigos objeto) {
         String sql = "INSERT INTO tb_amigos(id ,nome,telefone,email) VALUES(?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
-              stmt.setInt(1, objeto.getId());
+            stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getNome());
             stmt.setInt(3, objeto.getTelefone());
             stmt.setString(4, objeto.getEmail());
-          
 
             stmt.execute();
             stmt.close();
@@ -299,11 +245,6 @@ public class FerramentasDAO {
 
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     public boolean DeleteAmigosBD(int id) {
         try {
             Statement stmt = this.getConexao().createStatement();
@@ -316,11 +257,6 @@ public class FerramentasDAO {
         return true;
     }
 
-    /**
-     *
-     * @param objeto
-     * @return
-     */
     public boolean UpdateAmigosBD(Amigos objeto) {
 
         String sql = "UPDATE tb_amigos set nome = ? ,telefone = ? ,email = ? WHERE id = ?";
@@ -344,11 +280,6 @@ public class FerramentasDAO {
 
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     public Amigos carregaAmigos(int id) {
 
         Amigos objeto = new Amigos();
