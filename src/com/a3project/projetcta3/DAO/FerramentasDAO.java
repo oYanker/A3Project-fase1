@@ -32,10 +32,10 @@ public class FerramentasDAO {
 
             // Configurar a conexão
             String server = "localhost"; //caminho do MySQL
-            String database = "db_ferramentas";
+            String database = "db_garagemdotio";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Superserver1234";
+            String password = "mrbh79kj";
 
             connection = DriverManager.getConnection(url, user, password);
 
