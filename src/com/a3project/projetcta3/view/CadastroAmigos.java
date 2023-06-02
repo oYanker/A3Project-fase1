@@ -150,7 +150,7 @@ class CadastroAmigos extends javax.swing.JFrame {
         try {
             // recebendo e validando dados da interface gráfica.
             String nome = "";
-            int telefone = 0;
+            long telefone = 0;
             String email = "";
 
             if (this.jTextFieldNomeA.getText().length() < 2) {
@@ -159,14 +159,14 @@ class CadastroAmigos extends javax.swing.JFrame {
                 nome = this.jTextFieldNomeA.getText();
             }
 
-            if (this.jTextFieldTelefoneA.getText().length() < 9) {
-                throw new Mensagens("Telefone deve ser número válido de 9 dígitos.");
+            if (this.jTextFieldTelefoneA.getText().length() <= 7 || this.jTextFieldTelefoneA.getText().length() >= 13) {
+                throw new Mensagens("Telefone deve ser número válido de 8 a 12 dígitos.");
             } else {
-                telefone = Integer.parseInt(this.jTextFieldTelefoneA.getText());
+                telefone = Long.parseLong(this.jTextFieldTelefoneA.getText());
             }
-            
+
             //e-mail não obrigatório
-           /* if (this.jTextFieldEmailA.getText().length() <= 0) {
+            /* if (this.jTextFieldEmailA.getText().length() <= 0) {
                 throw new Mensagens("Defina um e-mail.");
             } else {
               

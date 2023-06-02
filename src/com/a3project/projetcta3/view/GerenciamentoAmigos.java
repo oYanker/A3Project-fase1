@@ -125,10 +125,6 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 110, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -154,7 +150,11 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(211, 211, 211)
                         .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +257,7 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
             // recebendo e validando dados da interface gráfica.
             int id = 0;
             String nome = "";
-            int telefone = 0;
+            long telefone = 0;
             String email = "";
 
             if (this.jLabelNome.getText().length() <= 3) {
@@ -266,10 +266,10 @@ public class GerenciamentoAmigos extends javax.swing.JFrame {
                 nome = this.jLabelNome.getText();
             }
 
-            if (this.jLabelTelefone.getText().length() <= 8) {
-                throw new Mensagens("Telefone deve ser numero válido de 9 digitos");
+            if (this.jLabelTelefone.getText().length() <= 7 || this.jLabelTelefone.getText().length() >= 13) {
+                throw new Mensagens("Telefone deve ser numero válido de 8 a 12 digitos");
             } else {
-                telefone = Integer.parseInt(this.jLabelTelefone.getText());
+                telefone = Long.parseLong(this.jLabelTelefone.getText());
             }
 
             email = this.jLabelEmail.getText();

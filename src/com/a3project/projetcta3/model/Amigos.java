@@ -8,7 +8,7 @@ public class Amigos {
 
     private int id;
     private String nome;
-    private int telefone;
+    private long telefone;
     private String email;
     private final FerramentasDAO dao;
 
@@ -16,7 +16,7 @@ public class Amigos {
         this.dao = new FerramentasDAO();
     }
 
-    public Amigos(int id, String nome, int telefone, String email) {
+    public Amigos(int id, String nome, long telefone, String email) {
 
         this.id = id;
         this.nome = nome;
@@ -41,11 +41,11 @@ public class Amigos {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
@@ -70,7 +70,7 @@ public class Amigos {
         return dao.getMinhaListaAmigos();
     }
 
-    public boolean InsertAmigosBD(String nome, int telefone, String email) throws SQLException {
+    public boolean InsertAmigosBD(String nome, long telefone, String email) throws SQLException {
         int id = this.maiorIDAmigos() + 1;
         Amigos objeto = new Amigos(id, nome, telefone, email);
         dao.InsertAmigosBD(objeto);
@@ -83,7 +83,7 @@ public class Amigos {
         return true;
     }
 
-    public boolean UpdateAmigosBD(int id, String nome, int telefone, String email) {
+    public boolean UpdateAmigosBD(int id, String nome, long telefone, String email) {
         Amigos objeto = new Amigos(id, nome, telefone, email);
         dao.UpdateAmigosBD(objeto);
         return true;

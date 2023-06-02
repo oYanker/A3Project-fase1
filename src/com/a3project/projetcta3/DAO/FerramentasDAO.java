@@ -207,7 +207,7 @@ public class FerramentasDAO {
 
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
-                int telefone = res.getInt("telefone");
+                long telefone = res.getLong("telefone");
                 String email = res.getString("email");
 
                 Amigos objetoA = new Amigos(id, nome, telefone, email);
@@ -231,7 +231,7 @@ public class FerramentasDAO {
 
             stmt.setInt(1, objeto.getId());
             stmt.setString(2, objeto.getNome());
-            stmt.setInt(3, objeto.getTelefone());
+            stmt.setLong(3, objeto.getTelefone());
             stmt.setString(4, objeto.getEmail());
 
             stmt.execute();
@@ -265,7 +265,7 @@ public class FerramentasDAO {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
 
             stmt.setString(1, objeto.getNome());
-            stmt.setInt(2, objeto.getTelefone());
+            stmt.setLong(2, objeto.getTelefone());
             stmt.setString(3, objeto.getEmail());
             stmt.setInt(4, objeto.getId());
 
@@ -291,7 +291,7 @@ public class FerramentasDAO {
             res.next();
 
             objeto.setNome(res.getString("nome"));
-            objeto.setTelefone(res.getInt("telefone"));
+            objeto.setTelefone(res.getLong("telefone"));
             objeto.setEmail(res.getString("email"));
 
             stmt.close();
