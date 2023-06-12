@@ -35,7 +35,7 @@ public class FerramentasDAO {
             String database = "db_ferramentas";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Superserver1234";
+            String password = "Sua senha aqui";
 
             connection = DriverManager.getConnection(url, user, password);
 
